@@ -2,8 +2,8 @@
 
 [[https://img.shields.io/badge/PDK-IHP%20SG13G2%20130nm-darkblue]](https://github.com/IHP-GmbH/IHP-Open-PDK)
 [[https://img.shields.io/badge/Flow-LibreLane%20v3.0.4-green]](https://github.com/librelane/librelane)
-[[https://img.shields.io/badge/Signoff-0%20DRC%20%7C%20Clean%20LVS-success]](#physical-verification)
-[[https://img.shields.io/badge/Timing-100MHz%20Met-orange]](#timing-closure)
+[[https://img.shields.io/badge/Signoff-0%20DRC%20%7C%20Clean%20LVS-success]](#physical-design--ppa-scorecard)
+[[https://img.shields.io/badge/Timing-100MHz%20Met-orange]](#physical-design--ppa-scorecard)
 
 An automated RTL-to-GDSII physical design implementation of a **4×4 Systolic Array Matrix-Multiply-Accumulate (MAC) Accelerator** targeting the European open-source **IHP SG13G2 130nm BiCMOS** technology node using LibreLane, OpenROAD, and OpenSTA.
 
@@ -61,5 +61,3 @@ The accelerator consists of a 2D mesh of 16 processing elements (PEs) optimized 
 │   └── pdn_cfg.tcl           # Power grid and ring synthesis script
 └── cocotb/
     └── chip_top_tb.py        # Python verification testbench
-
-
