@@ -53,32 +53,33 @@ async def start_up(dut):
 
 
 @cocotb.test()
-async def test_counter(dut):
-    """Run the counter test"""
-
-    # Create a logger for this testbench
-    logger = logging.getLogger("my_testbench")
-
-    logger.info("Startup sequence...")
-
-    # Start up
+async def test_systolic_array(dut):
+    """Verify systolic_array_4x4 LOAD -> COMPUTE -> READ flow."""
+    logger = logging.getLogger("systolic_tb")
     await start_up(dut)
+    await ClockCycles(dut.clk_PAD, 2)
+    assert int(dut.output_PAD.value) == 0, f"Expected 0 after reset, got {dut.output_PAD.value}"
 
-    logger.info("Running the test...")
+    # LOAD weights = 1 (ctrl_in = 2'b01, data_in = 1)
+    dut.input_PAD.value = (0b01 << 8) | 1
+    await ClockCycles(dut.clk_PAD, 5)
 
-    # Wait for some time...
-    await ClockCycles(dut.clk_PAD, 10)
+    # COMPUTE with activation = 2 (ctrl_in = 2'b10, data_in = 2)
+    dut.input_PAD.value = (0b10 << 8) | 2
+    await ClockCycles(dut.clk_PAD, 14)
 
-    # Start the counter by setting all inputs to 1
-    dut.input_PAD.value = -1
+    # READ & latch c_col0..c_col3 (ctrl_in = 2'b11)
+    dut.input_PAD.value = (0b11 << 8) | 0
+    await ClockCycles(dut.clk_PAD, 2)
 
-    # Wait for a number of clock cycles
-    await ClockCycles(dut.clk_PAD, 100)
+    cols = []
+    for col in range(4):
+        dut.input_PAD.value = (0b11 << 8) | col
+        await ClockCycles(dut.clk_PAD, 1)
+        cols.append(int(dut.output_PAD.value))
 
-    # Check the end result of the counter
-    assert dut.output_PAD.value == 100 - 1
-
-    logger.info("Done!")
+    logger.info(f"Systolic READ cols[0..3] = {cols}")
+    assert any(v != 0 for v in cols), f"Expected non-zero MAC output, got {cols}"
 
 
 def chip_top_runner():
