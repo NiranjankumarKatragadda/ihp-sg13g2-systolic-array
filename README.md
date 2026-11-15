@@ -1,6 +1,6 @@
 # 4x4 Systolic Array MAC Accelerator: RTL-to-GDSII on IHP SG13G2 (130nm BiCMOS)
 
-[[https://img.shields.io/badge/PDK-IHP%20SG13G2%20130nm-darkblue]](https://github.com/IHP-GmbH/IHP-Open-PDK)
+[[https://github.com/NiranjankumarKatragadda/ihp-sg13g2-systolic-array/actions/workflows/ci.yml/badge.svg]](https://github.com/NiranjankumarKatragadda/ihp-sg13g2-systolic-array/actions/workflows/ci.yml) [[https://img.shields.io/badge/PDK-IHP%20SG13G2%20130nm-darkblue]](https://github.com/IHP-GmbH/IHP-Open-PDK)
 [[https://img.shields.io/badge/Flow-LibreLane%20v3.0.4-green]](https://github.com/librelane/librelane)
 [[https://img.shields.io/badge/Signoff-0%20DRC%20%7C%20Clean%20LVS-success]](#physical-design--ppa-scorecard)
 [[https://img.shields.io/badge/Timing-100MHz%20Met-orange]](#physical-design--ppa-scorecard)
