@@ -101,6 +101,8 @@ def chip_top_runner():
     else:
         sources.append(proj_path / "../src/chip_top.sv")
         sources.append(proj_path / "../src/chip_core.sv")
+        sources.append(proj_path / "../src/pe.v")
+        sources.append(proj_path / "../src/systolic_array_4x4.v")
 
     sources += [
         # IO pad models
