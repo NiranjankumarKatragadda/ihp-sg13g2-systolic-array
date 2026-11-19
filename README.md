@@ -8,7 +8,7 @@
 
 A 4x4 weight-stationary systolic array for matrix multiply-accumulate, taken from RTL to signed-off GDSII on the open-source **IHP SG13G2 130nm BiCMOS** process using LibreLane, OpenROAD, and OpenSTA.
 
-[img/chip_top.png]
+<img src="img/chip_top.png" alt="Hardened GDSII layout" width="600" />
 
 ## Architecture
 16 processing elements (PEs) in a 2D mesh:
